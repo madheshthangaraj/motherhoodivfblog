@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motherhood IVF | Premium Blog Layout</title>
+  <style>
+    :root {
+      --primary: #008080; /* Brand Teal */
+      --secondary: #e91e63; /* Brand Pink */
+      --dark: #2c3e50;
+      --light-gray: #f8f9fa;
+      --border: #eaedef;
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      color: var(--dark);
+      line-height: 1.8;
+      background-color: #fff;
+    }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+    .logo-text { font-weight: 800; font-size: 1.4rem; color: var(--primary); text-decoration: none; }
+    .nav-links a { text-decoration: none; color: var(--dark); margin-left: 20px; font-weight: 500; font-size: 0.9rem; }
+
+    /* Layout Container */
+    .main-wrapper {
+      max-width: 1250px;
+      margin: 0 auto;
+      padding: 2rem 5%;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 50px;
+    }
+
+    /* Breadcrumbs */
+    .breadcrumb { font-size: 0.85rem; margin-bottom: 1.5rem; color: #888; }
+    .breadcrumb a { color: var(--primary); text-decoration: none; }
+
+    /* FIXED FRAME BLOG IMAGE */
+    .feature-image-frame {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      background-color: #eee;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    .feature-image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    /* Social Icons */
+    .social-top { display: flex; gap: 12px; margin-bottom: 20px; }
+    .social-btn {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--light-gray); display: flex;
+      align-items: center; justify-content: center;
+      text-decoration: none; font-size: 0.8rem; color: var(--dark);
+      border: 1px solid var(--border);
+    }
+
+    /* Author Section */
+    .author-bar {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 20px 0 40px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .author-img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; }
+    .author-link { font-weight: 700; color: var(--secondary); text-decoration: none; }
+
+    /* Content Body */
+    .content h2 { color: var(--primary); margin-top: 2.5rem; margin-bottom: 1rem; }
+    .content p { margin-bottom: 1.5rem; }
+    
+    /* Responsive CTA */
+    .content-cta {
+      background: linear-gradient(135deg, #f0fdfa 0%, #fff 100%);
+      border: 1px solid #ccf2f4;
+      border-radius: 20px;
+      display: flex;
+      overflow: hidden;
+      margin: 50px 0;
+      align-items: center;
+    }
+    .content-cta img { width: 45%; height: 280px; object-fit: cover; }
+    .cta-body { padding: 30px; }
+    .btn-main {
+      background: var(--secondary); color: white;
+      padding: 12px 25px; border-radius: 8px;
+      text-decoration: none; font-weight: 600; display: inline-block;
+      transition: var(--transition);
+      border: none;
+    }
+    .btn-main:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    /* Doctor Card */
+    .doctor-card {
+      background: var(--light-gray);
+      border-radius: 24px;
+      padding: 40px;
+      margin-top: 60px;
+      display: flex;
+      gap: 30px;
+    }
+    .doc-avatar { width: 140px; height: 140px; border-radius: 20px; object-fit: cover; }
+    .doc-btns { display: flex; gap: 15px; margin-top: 20px; }
+    .btn-outline { border: 1px solid var(--primary); color: var(--primary); background: transparent; }
+
+    /* Recent Blogs Grid */
+    .recent-section { margin-top: 80px; }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-top: 30px;
+    }
+    .small-card { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+    .small-card img { width: 100%; height: 160px; object-fit: cover; }
+    .small-card-pad { padding: 15px; }
+
+    /* Sidebar Widgets */
+    .sidebar { position: sticky; top: 100px; height: fit-content; }
+    .widget { margin-bottom: 40px; }
+    .widget h4 { font-size: 1.1rem; border-bottom: 2px solid var(--secondary); display: inline-block; margin-bottom: 20px; }
+    .widget ul { list-style: none; padding: 0; }
+    .widget li { margin-bottom: 12px; }
+    .widget li a { 
+      text-decoration: none; color: var(--dark); 
+      display: flex; justify-content: space-between; 
+      font-size: 0.95rem; padding: 5px 0;
+      transition: var(--transition);
+    }
+    .widget li a:hover { color: var(--primary); }
+    .count { background: #eee; padding: 2px 8px; border-radius: 20px; font-size: 0.75rem; }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .main-wrapper { grid-template-columns: 1fr; }
+      .blog-grid { grid-template-columns: 1fr 1fr; }
+      .content-cta { flex-direction: column; }
+      .content-cta img { width: 100%; height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo-text">MOTHERHOOD IVF</a>
+  <div class="nav-links">
+    <a href="#">Treatments</a>
+    <a href="#">Doctors</a>
+    <a href="#">Appointments</a>
+  </div>
+</nav>
+
+<div class="main-wrapper">
+  <main>
+    <div class="breadcrumb">
+      <a href="#">Home</a> / <a href="#">Insights</a> / <a href="#">IVF Success</a>
+    </div>
+
+    <div class="feature-image-frame">
+      <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=1500" alt="IVF Modern Lab">
+    </div>
+
+    <div class="social-top">
+      <a href="#" class="social-btn">Fb</a>
+      <a href="#" class="social-btn">Tw</a>
+      <a href="#" class="social-btn">Li</a>
+    </div>
+
+    <h1>Advancements in Fertility: The 2026 IVF Roadmap</h1>
+
+    <div class="author-bar">
+      <img src="https://i.pravatar.cc/100?img=32" alt="Doctor" class="author-img">
+      <div>
+        By <a href="#" class="author-link">Dr. Anjali Verma</a> 
+        <span style="margin-left:10px; color:#999;">• Senior Fertility Consultant</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <p>Modern fertility treatments have evolved significantly over the last decade. With the integration of AI-driven embryo selection and personalized hormonal protocols, success rates are at an all-time high, offering hope to thousands of aspiring parents worldwide.</p>
+      
+      <h2 id="section1">Understanding Biological Markers</h2>
+      <p>The first step in any modern IVF journey is a deep dive into biological markers. We no longer look at just age; we look at the cellular environment. Factors like AMH levels, ovarian reserve, and genetic mapping provide a blueprint that allows us to customize the medication dosage for each specific patient.</p>
+      <p>By analyzing these markers, we can predict how a patient will respond to stimulation, minimizing the risk of Ovarian Hyperstimulation Syndrome (OHSS) while maximizing the number of healthy eggs retrieved.</p>
+
+      <h2 id="section2">Cryopreservation Breakthroughs</h2>
+      <p>Vitrification technology has revolutionized how we store eggs and embryos, maintaining nearly 99% viability across years of storage. This "flash-freezing" technique prevents the formation of ice crystals that previously damaged delicate cells.</p>
+      <p>This has empowered women to take control of their reproductive timelines, allowing for social egg freezing and providing a safety net for those undergoing medical treatments like chemotherapy.</p>
+
+      <div class="content-cta">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600" alt="Consultation">
+        <div class="cta-body">
+          <h3>Personalized Fertility Audit</h3>
+          <p>Get a detailed analysis of your reproductive health with our senior consultants and start your journey with clarity.</p>
+          <a href="#" class="btn-main">Book Appointment Today</a>
+        </div>
+      </div>
+
+      <h2 id="section3">AI in Embryo Selection</h2>
+      <p>One of the most exciting developments in 2026 is the use of Artificial Intelligence in the embryology lab. AI algorithms can now analyze time-lapse images of developing embryos to identify the ones with the highest implantation potential.</p>
+      <p>This non-invasive selection process complements traditional PGT-A (Preimplantation Genetic Testing), ensuring that the most viable embryo is chosen for transfer, significantly reducing the "time to pregnancy."</p>
+
+      <h2 id="section4">The Role of Lifestyle and Nutrition</h2>
+      <p>While technology is vital, the "holistic IVF" approach emphasizes the internal environment of the body. We now integrate nutritional counseling, stress management, and acupuncture into our protocols.</p>
+      <p>Studies have shown that reducing oxidative stress through diet and specific antioxidants can improve egg and sperm quality, creating a more receptive uterine lining for the embryo.</p>
+    </div>
+
+    <div class="social-top" style="margin-top:40px; border-top: 1px solid #eee; padding-top: 20px;">
+      <span style="font-size: 0.9rem; margin-right: 15px;">Share Article:</span>
+      <a href="#" class="social-btn">Fb</a>
+      <a href="#" class="social-btn">Tw</a>
+      <a href="#" class="social-btn">Li</a>
+    </div>
+
+    <div class="doctor-card">
+      <img src="https://i.pravatar.cc/200?img=32" alt="Dr. Anjali" class="doc-avatar">
+      <div class="doc-info">
+        <h3 style="margin:0; color:var(--primary);">Dr. Anjali Verma</h3>
+        <p style="font-size: 0.95rem; margin: 15px 0;">Dr. Verma is a lead Fertility Specialist at Motherhood IVF with over 15 years of experience. She specializes in Recurrent Implantation Failure and Advanced Laparoscopic surgery.</p>
+        <div class="doc-btns">
+          <a href="#" class="btn-main btn-outline">View Profile</a>
+          <a href="#" class="btn-main">Book Appointment</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="recent-section">
+      <h3 style="color: var(--primary);">Read Our Recent Blogs</h3>
+      <div class="blog-grid">
+        <div class="small-card">
+          <img src="https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&w=400" alt="Blog">
+          <div class="small-card-pad">
+            <h4 style="margin:0; font-size: 1rem;">Egg Freezing 101</h4>
+            <a href="#" style="color: var(--secondary); font-size: 0.8rem; text-decoration: none;">Read More</a>
+          </div>
+        </div>
+        <div class="small-card">
+          <img src="https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&w=400" alt="Blog">
+          <div class="small-card-pad">
+            <h4 style="margin:0; font-size: 1rem;">Male Infertility Myths</h4>
+            <a href="#" style="color: var(--secondary); font-size: 0.8rem; text-decoration: none;">Read More</a>
+          </div>
+        </div>
+        <div class="small-card">
+          <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=400" alt="Blog">
+          <div class="small-card-pad">
+            <h4 style="margin:0; font-size: 1rem;">IVF Diet Plan</h4>
+            <a href="#" style="color: var(--secondary); font-size: 0.8rem; text-decoration: none;">Read More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="sidebar">
+    <div class="widget">
+      <h4>On This Page</h4>
+      <ul>
+        <li><a href="#section1">Biological Markers</a></li>
+        <li><a href="#section2">Cryopreservation</a></li>
+        <li><a href="#section3">AI in Embryology</a></li>
+        <li><a href="#section4">Lifestyle & Nutrition</a></li>
+      </ul>
+    </div>
+
+    <div class="widget">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="#">IVF Journey <span class="count">14</span></a></li>
+        <li><a href="#">Success Stories <span class="count">22</span></a></li>
+        <li><a href="#">Women's Health <span class="count">09</span></a></li>
+        <li><a href="#">Wellness <span class="count">11</span></a></li>
+        <li><a href="#">Male Fertility <span class="count">07</span></a></li>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+</body>
+</html>
